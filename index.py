@@ -39,11 +39,11 @@ def reader(serv):
     print(msg)
 
 
-print("Здраствуйте! Это sdech.py! Он нужен для соедниния с сервером, надеюсь у вас есть сервер на котром уже готово!")
-srv = str(input("Сервер"))
+print("This file is needed to connect to server!")
+srv = str(input("Server:"))
 cc = input("Create\Connect ? cr\co")
-tred = input("Tred?")
-msg = input("Ваше первое сообщение:")
+tred = input("Thread?")
+msg = input("Your first message:")
 if(cc=="cr"):
     t = urllib.request.urlopen(srv+"/creat.php?tred="+tred+"&pyb="+stru(pubu)).read().decode("utf-8")
     if(t == "Ok!"):
