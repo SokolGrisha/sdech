@@ -90,6 +90,9 @@ while True:
     except:
         inp=inp
     my=input("msg:")
-    msgfr=my
-    inp=urllib.request.urlopen(srv+"/ch/"+tred+"/msg.txt").read().decode("utf-8")
-    ed(srv,tred,rsa.encrypt(my.encode(),pubf))
+    if(my!=""):
+        msgfr=my
+        inp=urllib.request.urlopen(srv+"/ch/"+tred+"/msg.txt").read().decode("utf-8")
+        ed(srv,tred,rsa.encrypt(my.encode(),pubf))
+    else:
+        inp=urllib.request.urlopen(srv+"/ch/"+tred+"/msg.txt").read().decode("utf-8")
