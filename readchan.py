@@ -25,7 +25,7 @@ def stri(txt):
         enter[i]=int(enter[i])
     return enter
 noname=input('Название канала?')
-srv=input("Сервер где будет хранится канал?")
+srv=input("Сервер где будет хранится канал?\n")
 getcon=urllib.request.urlopen(srv+"/ch/"+noname+"/lenta.txt").read().decode("utf-8")
 wp=urllib.request.urlopen(srv+"/ch/"+noname+"/key.txt").read().decode("utf-8")
 wp=wp.split("(")[1].split(")")[0].split(", ")
@@ -34,8 +34,10 @@ for i in range(len(wp)):
 repri=rsa.PrivateKey(wp[0],wp[1],wp[2],wp[3],wp[4])
 getcon=st2by(getcon)
 getcon=getcon.split(b"-sdech-")
-ans=b""
+ans=""
 for i in range(len(getcon)):
-    ans+=rsa.decrypt(getcon[i],repri)
-ans=ans.decode().replace("/n","\n")
+    try:
+        print(rsa.decrypt(getcon[i],repri).decode()+"\n")
+    except:
+        print("Информация потерена, надеемся что это не пост, а резделитель")
 print(ans)
