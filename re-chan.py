@@ -39,16 +39,14 @@ pubu=rsa.PublicKey(int(wait),65537)
 #t:me auth
 #-------------------
 tc=time.ctime(time.time()).split(" ")[3]
-msg="/n-------------------/n "+fmsg+" /n___________________/n "+tc+" "+pse+"/n"
-msg=msg.split(" ")
+msg="/n-------------------/n "+fmsg+"/n___________________/n"+time.ctime(time.time())+" "+pse+"/n"
+msg=msg.split("/n")
 for i in range(len(msg)):
     msg[i]=rsa.encrypt(msg[i].encode(),pubu)
 amsg=b''
 for i in range(len(msg)):
     if(i!=len(msg)-1):
         amsg+=msg[i]+b"-sdech-"
-    elif(i==0):
-        amsg+=b"-sdech-"
     else:
         amsg+=msg[i]
 res=requests.get(srv+"rechan.php", params={'name': noname, 'pas': pas, 'msg':urllib.request.urlopen(srv+"ch/"+noname+"/lenta.txt").read().decode("utf-8")+","+by2st(amsg)})
