@@ -38,8 +38,8 @@ pse=input("Псевданим?")
 #t:me auth
 #-------------------
 tc=time.ctime(time.time()).split(" ")[3]
-msg="Chan create at "+tc+"/n-------------------/n "+fmsg+"/n___________________/n"+tc+" "+pse+"/n"
-msg=msg.split("\n")
+msg="Chan create at "+time.ctime(time.time())+"/n-------------------/n "+fmsg+"/n___________________/n"+tc+" "+pse+"/n"
+msg=msg.split("/n")
 for i in range(len(msg)):
     msg[i]=rsa.encrypt(msg[i].encode(),pubu)
 amsg=b''
